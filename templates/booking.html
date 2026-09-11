@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Book Your Event | Blessed & Unstoppable Acoustics
+</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+.booking-page {
+    min-height: 100vh;
+    padding: 150px 20px 80px;
+    background: #050505;
+}
+
+.booking-container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.booking-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.booking-header h1 {
+    font-size: clamp(38px, 6vw, 70px);
+    margin: 10px 0 20px;
+}
+
+.booking-header h1 span {
+    color: #f5b400;
+}
+
+.booking-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.booking-form {
+    background: #101010;
+    border: 1px solid rgba(245, 180, 0, 0.35);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #f5b400;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #050505;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #f5b400;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-note {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #aaa;
+}
+
+.form-success {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #f5b400;
+    color: #f5b400;
+    border-radius: 6px;
+    line-height: 1.6;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+
+    .booking-page {
+        padding: 120px 15px 50px;
+    }
+
+    .booking-form {
+        padding: 25px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-actions .btn {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+NAVIGATION
+===================================================== -->
+
+<nav class="navbar">
+
+<a href="{{ url_for('home') }}"
+class="logo">
+
+<img src="{{ url_for('static', filename='images/blessed.png') }}"
+alt="Blessed and Unstoppable Acoustics Logo">
+
+</a>
+
+
+<div class="nav-links">
+
+<a href="{{ url_for('home') }}">Home</a>
+
+<a href="{{ url_for('home') }}#services">Services</a>
+
+<a href="{{ url_for('home') }}#about">About</a>
+
+<a href="{{ url_for('home') }}#gallery">Gallery</a>
+
+<a href="{{ url_for('home') }}#videos">Videos</a>
+
+<a href="{{ url_for('home') }}#contact">Contact</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- =====================================================
+BOOKING
+===================================================== -->
+
+<section class="booking-page">
+
+<div class="booking-container">
+
+
+<div class="booking-header">
+
+<p class="eyebrow">
+BOOKING & QUOTE REQUEST
+</p>
+
+<h1>
+LET'S BUILD <span>YOUR EVENT.</span>
+</h1>
+
+<p>
+Tell us about your event and the services you need.
+Your request will be sent to Blessed & Unstoppable Acoustics,
+and you can continue the conversation with us directly on WhatsApp.
+</p>
+
+</div>
+
+
+
+<!--
+FORM SUBMIT sends the enquiry to:
+blessedandunstoppableacoustics@gmail.com
+
+The first submission will ask you to confirm the email address.
+-->
+
+<form
+id="bookingForm"
+class="booking-form"
+action="https://formsubmit.co/blessedandunstoppableacoustics@gmail.com"
+method="POST"
+target="emailSubmitFrame">
+
+
+<input type="hidden"
+name="_subject"
+value="New Booking / Quote Request - Blessed & Unstoppable Acoustics">
+
+<input type="hidden"
+name="_template"
+value="table">
+
+<input type="hidden"
+name="_captcha"
+value="true">
+
+<input type="hidden"
+name="_honey"
+value="">
+
+<input type="hidden"
+name="source"
+value="Blessed & Unstoppable Acoustics Website Booking Form">
+
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label for="name">
+Full Name *
+</label>
+
+<input
+type="text"
+id="name"
+name="Customer Name"
+placeholder="Your full name"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="company">
+Company / Organisation
+</label>
+
+<input
+type="text"
+id="company"
+name="Company / Organisation"
+placeholder="Company or organisation name">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="phone">
+Phone / WhatsApp Number *
+</label>
+
+<input
+type="tel"
+id="phone"
+name="Customer Phone"
+placeholder="e.g. 067 123 4567"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="email">
+Email Address *
+</label>
+
+<input
+type="email"
+id="email"
+name="Customer Email"
+placeholder="your@email.com"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="event">
+Event / Project *
+</label>
+
+<input
+type="text"
+id="event"
+name="Event / Project"
+placeholder="e.g. Concert, Church Service, Wedding"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="date">
+Event Date *
+</label>
+
+<input
+type="date"
+id="date"
+name="Event Date"
+required>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label for="venue">
+Venue / Address *
+</label>
+
+<input
+type="text"
+id="venue"
+name="Venue / Address"
+placeholder="Where will the event take place?"
+required>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label for="services">
+Services Needed *
+</label>
+
+<select
+id="services"
+name="Services Needed"
+required>
+
+<option value="">
+Select the main service you need
+</option>
+
+<option value="Stage Design">
+Stage Design
+</option>
+
+<option value="Sound & Backline Productions">
+Sound & Backline Productions
+</option>
+
+<option value="LED Screens & Lighting Productions">
+LED Screens & Lighting Productions
+</option>
+
+<option value="Live Streaming">
+Live Streaming
+</option>
+
+<option value="3D Stage Concepts">
+3D Stage Concepts
+</option>
+
+<option value="Full Event Production">
+Full Event Production
+</option>
+
+<option value="Multiple / Full Package">
+Multiple / Full Package
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label for="details">
+Event Details / Requirements *
+</label>
+
+<textarea
+id="details"
+name="Event Details / Requirements"
+placeholder="Tell us about your event, expected number of guests, stage size, sound requirements, LED screens, lighting, streaming or anything else we should know."
+required></textarea>
+
+</div>
+
+
+</div>
+
+
+
+<div class="form-actions">
+
+<button
+type="submit"
+class="btn primary"
+id="submitButton">
+
+SEND BOOKING REQUEST
+
+</button>
+
+
+<button
+type="button"
+class="btn secondary"
+id="whatsappButton">
+
+SEND TO WHATSAPP
+
+</button>
+
+</div>
+
+
+
+<p class="form-note">
+
+<strong>How it works:</strong>
+Your booking request is sent to our email and the WhatsApp
+button creates a ready-to-send WhatsApp message containing
+your event information.
+
+</p>
+
+
+<div
+id="successMessage"
+class="form-success">
+
+Your booking request has been submitted.
+Please check that the email address has been confirmed
+with FormSubmit. WhatsApp is also ready for you to send
+the same booking details.
+
+</div>
+
+
+</form>
+
+
+
+<iframe
+name="emailSubmitFrame"
+id="emailSubmitFrame"
+style="display:none;">
+</iframe>
+
+
+<a
+href="{{ url_for('home') }}"
+class="btn secondary back-link">
+
+← BACK TO WEBSITE
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+WHATSAPP SCRIPT
+===================================================== -->
+
+<script>
+
+const form = document.getElementById("bookingForm");
+const whatsappButton = document.getElementById("whatsappButton");
+const successMessage = document.getElementById("successMessage");
+
+function getBookingMessage() {
+
+    const name = document.getElementById("name").value.trim();
+    const company = document.getElementById("company").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const eventName = document.getElementById("event").value.trim();
+    const eventDate = document.getElementById("date").value;
+    const venue = document.getElementById("venue").value.trim();
+    const services = document.getElementById("services").value;
+    const details = document.getElementById("details").value.trim();
+
+    return `Hello Blessed & Unstoppable Acoustics,
+
+I would like to request a booking / quotation.
+
+CUSTOMER DETAILS
+Name: ${name}
+Company / Organisation: ${company || "N/A"}
+Phone / WhatsApp: ${phone}
+Email: ${email}
+
+EVENT DETAILS
+Event / Project: ${eventName}
+Event Date: ${eventDate}
+Venue / Address: ${venue}
+Services Needed: ${services}
+
+REQUIREMENTS
+${details}
+
+Thank you.
+I look forward to hearing from you.`;
+
+}
+
+
+whatsappButton.addEventListener("click", function () {
+
+    if (!form.checkValidity()) {
+
+        form.reportValidity();
+
+        return;
+
+    }
+
+    const message = getBookingMessage();
+
+    const whatsappUrl =
+        "https://wa.me/27676307535?text=" +
+        encodeURIComponent(message);
+
+    window.open(
+        whatsappUrl,
+        "_blank"
+    );
+
+});
+
+
+form.addEventListener("submit", function () {
+
+    successMessage.style.display = "block";
+
+});
+
+</script>
+
+
+</body>
+
+</html>

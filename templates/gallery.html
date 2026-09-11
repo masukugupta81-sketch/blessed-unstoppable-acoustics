@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+{{ title }} | Blessed & Unstoppable Acoustics
+</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+<a href="{{ url_for('home') }}"
+class="logo">
+
+<img src="{{ url_for('static', filename='images/blessed.png') }}"
+alt="Blessed and Unstoppable Acoustics Logo">
+
+</a>
+
+
+<div class="nav-links">
+
+<a href="{{ url_for('home') }}">
+Home
+</a>
+
+<a href="{{ url_for('home') }}#services">
+Services
+</a>
+
+<a href="{{ url_for('home') }}#about">
+About
+</a>
+
+<a href="{{ url_for('home') }}#gallery">
+Gallery
+</a>
+
+<a href="{{ url_for('home') }}#contact">
+Contact
+</a>
+
+</div>
+
+</nav>
+
+
+
+<section class="gallery-page">
+
+
+<div class="gallery-page-header">
+
+<p class="eyebrow">
+OUR WORK
+</p>
+
+
+<h1>
+{{ title }}
+</h1>
+
+
+<p>
+{{ description }}
+</p>
+
+
+<div class="gallery-actions">
+
+<a href="{{ url_for('home') }}#gallery"
+class="btn secondary">
+
+← BACK TO CATALOG
+
+</a>
+
+
+<a href="{{ url_for('booking') }}"
+class="btn primary">
+
+BOOK YOUR EVENT
+
+</a>
+
+</div>
+
+</div>
+
+
+
+{% if images %}
+
+
+<div class="gallery-grid">
+
+
+{% for image in images %}
+
+
+<div class="gallery-item">
+
+
+<img
+src="{{ url_for('static', filename='images/' + folder + '/' + image) }}"
+alt="{{ title }} Project {{ loop.index }}"
+loading="lazy">
+
+
+<div class="gallery-label">
+
+PROJECT {{ "%02d"|format(loop.index) }}
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+{% else %}
+
+
+<div class="empty-gallery">
+
+<h2>
+NO PROJECT IMAGES YET
+</h2>
+
+<p>
+
+Add images to:
+
+<strong>
+static/images/{{ folder }}
+</strong>
+
+</p>
+
+</div>
+
+
+{% endif %}
+
+
+</section>
+
+
+
+<footer>
+
+<a href="{{ url_for('home') }}"
+class="logo">
+
+<img src="{{ url_for('static', filename='images/blessed.png') }}"
+alt="Blessed and Unstoppable Acoustics Logo">
+
+</a>
+
+
+<p>
+Professional Stage Design • Sound • Lighting • LED Screens
+</p>
+
+
+<p class="copyright">
+© 2026 Blessed and Unstoppable Acoustics.
+All Rights Reserved.
+</p>
+
+</footer>
+
+
+</body>
+
+</html>
